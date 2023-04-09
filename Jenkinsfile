@@ -20,10 +20,8 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'dockerhublogin')]) {
                    sh 'docker login -u smondepulanka -p P@andurga541541'
 
-}
                    sh 'docker push helloworld:latest'
                 }
             }
