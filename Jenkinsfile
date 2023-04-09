@@ -22,7 +22,7 @@ pipeline {
                 script{
                    sh 'docker login -u smondepulanka -p P@andurga541541'
 
-                   sh 'docker push smondepulanka/helloworld:latest'
+                   sh 'docker push helloworld:latest'
                 }
             }
         }
