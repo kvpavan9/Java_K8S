@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t helloworld .'
+                    sh 'docker build -t smondepulanka/helloworld .'
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
                 script{
                    sh 'docker login -u smondepulanka -p P@andurga541541'
 
-                   sh 'docker push helloworld:latest'
+                   sh 'docker push smondepulanka/helloworld'
                 }
             }
         }
