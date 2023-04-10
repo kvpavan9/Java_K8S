@@ -26,7 +26,15 @@ pipeline {
                 }
             }
         }
-        
+       stage('Connect to EKS cluster') {
+         steps {
+           script {
+             sh """
+             aws eks --region us-east-1 update-kubeconfig --name demo-eks
+             """
+        }
+      }
+    }
        stage('Deploying App to Kubernetes') {
          steps {
            script {
