@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy to k8s'){
             steps{
                 script{
-                    kubernetesDeploy (configs: 'deployment.yml',kubeconfigId: 'kubernetes')
+                    kubernetesDeploy (configs: 'deployment.yml',kubeconfigId: 'demo-eks')
                 }
             }
         }
