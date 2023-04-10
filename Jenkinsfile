@@ -27,14 +27,14 @@ pipeline {
             }
         }
         
-       stage('Deploying App to Kubernetes') {
-        steps {
-          script {
-            kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "kubernetes")
-          }
+       stage('K8S Deploy') {
+        steps{   
+            script {
+                withKubeConfig([credentialsId: 'kubernetes', serverUrl: '']) {
+                sh ('kubectl apply -f  deployment.yml')
+                }
+            }
         }
-      }
-
-  }
-
+       }
+    }
 }
