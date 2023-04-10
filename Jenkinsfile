@@ -26,15 +26,15 @@ pipeline {
                 }
             }
         }
-stage('Integrate Jenkins with EKS Cluster and Deploy App') {
-            steps {
-                withAWS(credentials: '951664088898', region: 'us-east-1') {
-                  script {
-                    sh ('aws eks update-kubeconfig --name demo-eks --region us-east-1')
-                    sh "kubectl apply -f deployment.yml"
-                }
-                }
+        
+       stage('Deploying App to Kubernetes') {
+        steps {
+          script {
+            kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "kubernetes")
+          }
         }
-    }
-    }
+      }
+
+  }
+
 }
