@@ -28,6 +28,7 @@ pipeline {
         }
         stage('Deploy to k8s'){
             steps{
+                sshagent(['sshdemo']) {
                 script{
                     kubernetesDeploy (configs: 'deployment.yml',kubeconfigId: 'demo-eks')
                 }
@@ -35,3 +36,4 @@ pipeline {
         }
     }
 }
+}    
